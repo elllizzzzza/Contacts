@@ -1,17 +1,16 @@
 package org.example;
 
+import lombok.NoArgsConstructor;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+@NoArgsConstructor
 public class ContactsImpl {
     private List<Contact> contacts = new ArrayList<>();
     private File file = null;
-
-    public ContactsImpl(){
-
-    }
 
     public ContactsImpl(String fileName) {
         if (fileName != null && !fileName.isEmpty()) {

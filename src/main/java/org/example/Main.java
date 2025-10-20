@@ -45,11 +45,11 @@ public class Main {
             String name = scanner.nextLine();
             System.out.print("Enter the surname: ");
             String surname = scanner.nextLine();
-            Person person = new Person(name, surname);
             System.out.print("Enter the birth date: ");
-            person.setBirthDate(scanner.nextLine());
+            String birthday = scanner.nextLine();
             System.out.print("Enter the gender (M, F): ");
-            person.setGender(scanner.nextLine());
+            String gender = scanner.nextLine();
+            Person person = new Person(name, surname, birthday, gender);
             System.out.print("Enter the number: ");
             person.setPhoneNumber(scanner.nextLine());
             person.setTimeCreated(LocalDateTime.now());

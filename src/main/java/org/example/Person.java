@@ -1,21 +1,15 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
+@AllArgsConstructor
 public class Person extends Contact{
     private String name;
     private String surname;
     private String birthDate;
     private String gender;
-
-    public Person(String name, String surname) {
-        super();
-        this.name = name;
-        this.surname = surname;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
 
     public void setBirthDate(String birthDate) {
         if (birthDate.isEmpty()) {
@@ -24,10 +18,6 @@ public class Person extends Contact{
         }
         this.birthDate = birthDate;
         updateLastUpdated();
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public void setGender(String gender) {
@@ -40,17 +30,9 @@ public class Person extends Contact{
         updateLastUpdated();
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
         updateLastUpdated();
-    }
-
-    public String getSurname() {
-        return surname;
     }
 
     public void setSurname(String surname) {

@@ -1,26 +1,17 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Organization extends Contact{
     private String orgName;
     private String address;
 
-    public Organization(String orgName ,String address) {
-        super();
-        this.address = address;
-        this.orgName = orgName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
     public void setAddress(String address) {
         this.address = address;
         updateLastUpdated();
-    }
-
-    public String getOrgName() {
-        return orgName;
     }
 
     public void setOrgName(String orgName) {

@@ -1,19 +1,20 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public abstract class Contact implements Serializable {
     private String phoneNumber;
     private LocalDateTime timeCreated;
     private LocalDateTime lastUpdated;
-
-    public Contact() {
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+    private static final String PHONE_NUMBER_REGEX = "^\\+?(\\(?[0-9A-Za-z]+\\)?([ -](\\(?[0-9A-Za-z]{2,}\\)?))*$)";
 
     public void setPhoneNumber(String phoneNumber) {
         if (isValid(phoneNumber)) {
@@ -25,30 +26,12 @@ public abstract class Contact implements Serializable {
         updateLastUpdated();
     }
 
-    public LocalDateTime getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public void setLastUpdated(LocalDateTime lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-
-    public LocalDateTime getTimeCreated() {
-        return timeCreated;
-    }
-
-    public void setTimeCreated(LocalDateTime timeCreated) {
-        this.timeCreated = timeCreated;
-    }
-
     private boolean isValid(String number){
-        String regex = "^\\+?(\\(?[0-9A-Za-z]{1,}\\)?([ -](\\(?[0-9A-Za-z]{2,}\\)?))*$)";
-
         if(number.chars().filter(ch -> ch == '(').count() > 1 ||
         number.chars().filter(ch -> ch == ')').count() > 1){
             return false;
         }
-        return number.matches(regex);
+        return number.matches(PHONE_NUMBER_REGEX);
     }
 
     public boolean hasNumber(){
